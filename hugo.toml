@@ -1,0 +1,153 @@
+baseURL = "/"
+languageCode = "zh-cn"
+defaultContentLanguage = "zh-cn"
+title = "我的博客"
+theme = "FixIt"
+enableGitInfo = true
+
+[params]
+  # 网站描述
+  description = "我的个人博客"
+  # 默认主题 ("light", "dark", "auto")
+  defaultTheme = "auto"
+  # 日期格式
+  dateFormat = "2006-01-02"
+
+  # 页面顶部导航配置
+  [params.header]
+    # 桌面端导航栏模式 ("sticky", "normal", "auto")
+    desktopMode = "sticky"
+    # 移动端导航栏模式 ("sticky", "normal", "auto")
+    mobileMode = "auto"
+
+  # 页面底部配置
+  [params.footer]
+    enable = true
+    # 版权信息
+    copyright = true
+    # 作者
+    author = true
+    # Hugo 和 FixIt 信息
+    hugo = true
+    hostedOn = ""
+    since = 2025
+
+  # 搜索配置
+  [params.search]
+    enable = true
+    type = "fuse"
+    contentLength = 4000
+    placeholder = ""
+    maxResultLength = 10
+    snippetLength = 50
+    highlightTag = "em"
+    absoluteURL = false
+    [params.search.fuse]
+      ignoreLocation = true
+      offset = 0
+      location = 0
+      threshold = 0.6
+      distance = 100
+      minMatchCharLength = 1
+      isCaseSensitive = false
+      findAllMatches = false
+      keys = ["title", "content", "tags", "categories"]
+
+  # 主页配置
+  [params.home]
+    rss = 10
+    [params.home.profile]
+      enable = true
+      title = "我的博客"
+      subtitle = "欢迎来到我的个人博客"
+      avatarURL = "/images/avatar.png"
+      typeit = true
+      social = true
+
+  # 分类配置
+  [params.section]
+    paginate = 20
+    dateFormat = "01-02"
+    rss = 10
+
+  # 文章配置
+  [params.page]
+    # 是否在文章页面使用 lightgallery
+    lightgallery = false
+    # 是否在文章页面显示最后修改时间
+    lastmod = true
+    # 是否使用 Git 信息
+    gitinfo = true
+    # 代码块配置
+    [params.page.code]
+      copy = true
+      maxShownLines = 10
+    # 目录配置
+    [params.page.toc]
+      enable = true
+      keepStatic = false
+      auto = true
+    # 数学公式 (KaTeX)
+    [params.page.math]
+      enable = true
+      blockLeftDelimiter = "$$"
+      blockRightDelimiter = "$$"
+      inlineLeftDelimiter = "$"
+      inlineRightDelimiter = "$"
+
+  # 社交链接
+  [params.social]
+    GitHub = ""
+    Email = ""
+
+# 导航菜单
+[menu]
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/archives/"
+    weight = 1
+  [[menu.main]]
+    identifier = "categories"
+    name = "分类"
+    url = "/categories/"
+    weight = 2
+  [[menu.main]]
+    identifier = "tags"
+    name = "标签"
+    url = "/tags/"
+    weight = 3
+  [[menu.main]]
+    identifier = "about"
+    name = "关于我"
+    url = "/about/"
+    weight = 4
+
+# Markdown 渲染配置
+[markup]
+  [markup.highlight]
+    lineNos = true
+    codeFences = true
+    guessSyntax = true
+    lineNoStart = 1
+    lineNumbersInTable = true
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.cjk]
+        enable = true
+
+# 输出格式
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
+# 分类和标签
+[taxonomies]
+  category = "categories"
+  tag = "tags"
