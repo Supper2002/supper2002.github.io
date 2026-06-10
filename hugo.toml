@@ -1,153 +1,276 @@
 baseURL = "/"
-languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
-title = "我的博客"
+title = "Hello Supper2002"
 theme = "FixIt"
 enableGitInfo = true
+hasCJKLanguage = true
 
 [params]
-  # 网站描述
+  version = "0.4.X"
   description = "我的个人博客"
-  # 默认主题 ("light", "dark", "auto")
+  keywords = ["Hugo", "FixIt", "博客"]
   defaultTheme = "auto"
-  # 日期格式
   dateFormat = "2006-01-02"
 
-  # 页面顶部导航配置
-  [params.header]
-    # 桌面端导航栏模式 ("sticky", "normal", "auto")
-    desktopMode = "sticky"
-    # 移动端导航栏模式 ("sticky", "normal", "auto")
-    mobileMode = "auto"
+  [params.author]
+    name = ""
+    email = ""
+    link = ""
+    avatar = ""
 
-  # 页面底部配置
+  [params.header]
+    desktopMode = "sticky"
+    mobileMode = "auto"
+    [params.header.title]
+      logo = "/images/avatar.jpg"
+      name = "Supper2002"
+      pre = ""
+      post = ""
+      typeit = false
+
   [params.footer]
     enable = true
-    # 版权信息
     copyright = true
-    # 作者
     author = true
-    # Hugo 和 FixIt 信息
-    hugo = true
-    hostedOn = ""
-    since = 2025
+    since = "2020"
+    [params.footer.powered]
+      enable = true
+      hugoLogo = true
+      themeLogo = true
 
-  # 搜索配置
   [params.search]
     enable = true
     type = "fuse"
     contentLength = 4000
     placeholder = ""
     maxResultLength = 10
-    snippetLength = 50
+    snippetLength = 30
     highlightTag = "em"
     absoluteURL = false
     [params.search.fuse]
-      ignoreLocation = true
-      offset = 0
-      location = 0
-      threshold = 0.6
-      distance = 100
-      minMatchCharLength = 1
       isCaseSensitive = false
+      minMatchCharLength = 2
       findAllMatches = false
-      keys = ["title", "content", "tags", "categories"]
+      location = 0
+      threshold = 0.3
+      distance = 100
+      ignoreLocation = false
 
-  # 主页配置
   [params.home]
-    rss = 10
     [params.home.profile]
       enable = true
-      title = "我的博客"
+      avatarURL = "/images/avatar.jpg"
+      title = ""
       subtitle = "欢迎来到我的个人博客"
-      avatarURL = "/images/avatar.png"
       typeit = true
       social = true
+      disclaimer = ""
+    [params.home.posts]
+      enable = true
+      paginate = 6
 
-  # 分类配置
+  [params.archives]
+    paginate = 20
+    dateFormat = "01-02"
+
   [params.section]
     paginate = 20
     dateFormat = "01-02"
-    rss = 10
 
-  # 文章配置
+  [params.list]
+    paginate = 20
+    dateFormat = "01-02"
+
+  [params.social]
+    GitHub = ""
+    Email = ""
+    RSS = true
+
+  [params.cookieconsent]
+    enable = true
+
   [params.page]
-    # 是否在文章页面使用 lightgallery
     lightgallery = false
-    # 是否在文章页面显示最后修改时间
-    lastmod = true
-    # 是否使用 Git 信息
-    gitinfo = true
-    # 代码块配置
-    [params.page.code]
-      copy = true
-      maxShownLines = 10
-    # 目录配置
+    showLastmod = true
+    wordCount = true
+    readingTime = true
     [params.page.toc]
       enable = true
       keepStatic = false
       auto = true
-    # 数学公式 (KaTeX)
+      position = "right"
     [params.page.math]
       enable = true
-      blockLeftDelimiter = "$$"
-      blockRightDelimiter = "$$"
-      inlineLeftDelimiter = "$"
-      inlineRightDelimiter = "$"
+      type = "katex"
+    [params.page.share]
+      enable = true
+      Weibo = true
+      Twitter = true
+      Facebook = true
+    [params.page.comment]
+      enable = false
 
-  # 社交链接
-  [params.social]
-    GitHub = ""
-    Email = ""
+  [params.codeblock]
+    wrapper = true
+    mode = "mac"
+    maxShownLines = 10
+    copyable = true
 
-# 导航菜单
-[menu]
-  [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives/"
-    weight = 1
-  [[menu.main]]
-    identifier = "categories"
-    name = "分类"
-    url = "/categories/"
-    weight = 2
-  [[menu.main]]
-    identifier = "tags"
-    name = "标签"
-    url = "/tags/"
-    weight = 3
-  [[menu.main]]
-    identifier = "about"
-    name = "关于我"
-    url = "/about/"
-    weight = 4
+# 导航菜单（与参考站保持一致）
+[[menus.main]]
+  identifier = "archives"
+  name = "归档"
+  url = "/archives/"
+  weight = 1
+  [menus.main.params]
+    icon = "fa-solid fa-archive fa-fw"
 
-# Markdown 渲染配置
+# 学习 - 下拉子菜单
+[[menus.main]]
+  identifier = "study"
+  name = "学习"
+  weight = 2
+  [menus.main.params]
+    icon = "fa-solid fa-newspaper fa-fw"
+
+[[menus.main]]
+  identifier = "algorithm"
+  name = "算法竞赛"
+  url = "/categories/算法竞赛/"
+  parent = "study"
+  weight = 1
+  [menus.main.params]
+    icon = "fa-solid fa-trophy fa-fw"
+
+[[menus.main]]
+  identifier = "ml"
+  name = "机器学习"
+  url = "/categories/机器学习/"
+  parent = "study"
+  weight = 2
+  [menus.main.params]
+    icon = "fa-solid fa-gears fa-fw"
+
+[[menus.main]]
+  identifier = "security"
+  name = "网络安全"
+  url = "/categories/网络安全/"
+  parent = "study"
+  weight = 3
+  [menus.main.params]
+    icon = "fa-solid fa-shield fa-fw"
+
+[[menus.main]]
+  identifier = "dev"
+  name = "开发"
+  url = "/categories/开发/"
+  parent = "study"
+  weight = 4
+  [menus.main.params]
+    icon = "fa-solid fa-code fa-fw"
+
+[[menus.main]]
+  identifier = "math"
+  name = "数学"
+  url = "/categories/数学/"
+  parent = "study"
+  weight = 5
+  [menus.main.params]
+    icon = "fa-solid fa-square-root-variable fa-fw"
+
+[[menus.main]]
+  identifier = "blog-study"
+  name = "博客"
+  url = "/categories/博客/"
+  parent = "study"
+  weight = 6
+  [menus.main.params]
+    icon = "fa-solid fa-file fa-fw"
+
+# 记录
+[[menus.main]]
+  identifier = "record"
+  name = "记录"
+  url = "/categories/记录/"
+  weight = 3
+  [menus.main.params]
+    icon = "fa-solid fa-pencil fa-fw"
+
+# 照片墙
+[[menus.main]]
+  identifier = "photos"
+  name = "照片墙"
+  url = "/photos-wall/"
+  weight = 4
+  [menus.main.params]
+    icon = "fa-solid fa-camera fa-fw"
+
+# 游戏
+[[menus.main]]
+  identifier = "game"
+  name = "游戏"
+  url = "/categories/游戏/"
+  weight = 5
+  [menus.main.params]
+    icon = "fa-solid fa-gamepad fa-fw"
+
+# 电子书
+[[menus.main]]
+  identifier = "ebooks"
+  name = "电子书"
+  url = "/categories/电子书/"
+  weight = 6
+  [menus.main.params]
+    icon = "fa-solid fa-book fa-fw"
+
+# 标签
+[[menus.main]]
+  identifier = "tags"
+  name = "标签"
+  url = "/tags/"
+  weight = 7
+  [menus.main.params]
+    icon = "fa-solid fa-tags fa-fw"
+
+# 友链
+[[menus.main]]
+  identifier = "friends"
+  name = "友链"
+  url = "/friends/"
+  weight = 8
+  [menus.main.params]
+    icon = "fa-solid fa-link fa-fw"
+
+# 关于我
+[[menus.main]]
+  identifier = "about"
+  name = "关于我"
+  url = "/about/"
+  weight = 9
+  [menus.main.params]
+    icon = "fa-solid fa-info-circle fa-fw"
+
+# Markdown 渲染
 [markup]
   [markup.highlight]
-    lineNos = true
     codeFences = true
-    guessSyntax = true
-    lineNoStart = 1
-    lineNumbersInTable = true
     noClasses = false
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-    [markup.goldmark.extensions]
-      [markup.goldmark.extensions.cjk]
-        enable = true
 
 # 输出格式
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "archives", "offline", "search"]
   page = ["HTML"]
   section = ["HTML", "RSS"]
-  taxonomy = ["HTML", "RSS"]
+  taxonomy = ["HTML"]
   term = ["HTML", "RSS"]
 
-# 分类和标签
 [taxonomies]
   category = "categories"
   tag = "tags"
+  collection = "collections"

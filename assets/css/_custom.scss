@@ -1,0 +1,65 @@
+/* ================================
+   导航栏居中布局
+   ================================ */
+
+/* 让 header-wrapper 内容居中 */
+#header-desktop .header-wrapper {
+  position: relative;
+  justify-content: center !important;
+}
+
+/* 标题绝对定位到左侧，不占 flex 空间 */
+#header-desktop .header-wrapper .header-title {
+  position: absolute;
+  left: MAX(10vh, 3.5rem);
+  flex: none !important;
+  min-width: auto !important;
+}
+
+/* 菜单不浮动，正常 flex 排列 */
+#header-desktop .header-wrapper .menu {
+  float: none !important;
+}
+
+/* 分隔线、搜索、主题切换定位到右侧 */
+#header-desktop .header-wrapper .menu > .menu-item.delimiter,
+#header-desktop .header-wrapper .menu > .menu-item.search,
+#header-desktop .header-wrapper .menu > .menu-item.theme-switch {
+  position: absolute;
+  right: 2rem;
+}
+
+#header-desktop .header-wrapper .menu > .menu-item.theme-switch {
+  right: 2rem;
+}
+
+#header-desktop .header-wrapper .menu > .menu-item.search {
+  right: 4rem;
+}
+
+#header-desktop .header-wrapper .menu > .menu-item.delimiter {
+  right: 6.5rem;
+}
+
+/* ================================
+   导航栏高度
+   ================================ */
+
+#header-desktop {
+  height: 3.5rem !important;
+  line-height: 3.5rem !important;
+}
+
+#header-desktop .header-wrapper {
+  height: 3.5rem !important;
+}
+
+/* ================================
+   Logo 大小
+   ================================ */
+
+.header-title .logo {
+  width: 26px !important;
+  height: 26px !important;
+  max-height: 26px !important;
+}

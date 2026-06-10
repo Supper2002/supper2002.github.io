@@ -2,37 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/categories/</loc>
-    <lastmod>2025-06-10T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhost:1313/posts/</loc>
-    <lastmod>2025-06-10T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhost:1313/tags/</loc>
-    <lastmod>2025-06-10T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhost:1313/categories/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2025-06-10T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhost:1313/posts/my-first-post/</loc>
-    <lastmod>2025-06-10T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhost:1313/about/</loc>
-    <lastmod>2025-06-10T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhost:1313/tags/%E5%BC%80%E5%A7%8B/</loc>
-    <lastmod>2025-06-10T00:00:00+00:00</lastmod>
+    <lastmod>2026-06-10T22:28:12+08:00</lastmod>
   </url>
   <url>
     <loc>//localhost:1313/</loc>
+    <lastmod>2026-06-10T22:28:12+08:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost:1313/posts/</loc>
+    <lastmod>2026-06-10T22:28:12+08:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2026-06-10T22:28:12+08:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost:1313/categories/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2026-06-10T22:28:12+08:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost:1313/posts/my-first-post/</loc>
+    <lastmod>2026-06-10T22:28:12+08:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost:1313/about/</loc>
+    <lastmod>2026-06-10T22:28:12+08:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost:1313/tags/%E5%BC%80%E5%A7%8B/</loc>
+    <lastmod>2026-06-10T22:28:12+08:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost:1313/friends/</loc>
     <lastmod>2025-06-10T00:00:00+00:00</lastmod>
   </url>
   <url>
+    <loc>//localhost:1313/photos-wall/</loc>
+    <lastmod>2025-06-10T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost:1313/collections/</loc>
+  </url>
+  <url>
     <loc>//localhost:1313/archives/</loc>
+    <lastmod>2026-06-10T22:28:12+08:00</lastmod>
   </url>
 </urlset>
