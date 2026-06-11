@@ -1,0 +1,51 @@
+{{- $footerConfig := .Site.Params.footer -}}
+
+{{- if ne $footerConfig.enable false -}}
+  <footer class="footer">
+    <div class="footer-container">
+      {{- /* Custom Footer */ -}}
+      {{- block "custom-footer" . }}{{ end -}}
+
+      <div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork">
+        <i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+        {{ with $footerConfig.since -}}
+          <span itemprop="copyrightYear">
+            {{- if lt . now.Year }}{{ . }} - {{ end }}{{ now.Year -}}
+          </span>
+        {{- else -}}
+          <span itemprop="copyrightYear">{{ now.Year }}</span>
+        {{- end -}}
+        <span class="author" itemprop="copyrightHolder"> Supper2002的博客</span>
+        <span class="footer-divider"></span>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hugo</a>
+      </div>
+
+      {{- /* 不蒜子 */ -}}
+      {{- $busuanzi := .Site.Params.busuanzi -}}
+      {{- if eq $busuanzi.enable true -}}
+        {{- $loading := dict "Class" "fa-solid fa-spinner fa-spin" | partial "plugin/icon.html" -}}
+        {{- $iconUV := dict "Class" "fa-regular fa-user me-1" | partial "plugin/icon.html" -}}
+        {{- $iconPV := dict "Class" "fa-regular fa-eye me-1" | partial "plugin/icon.html" -}}
+        <div class="footer-line visitor{{ with $footerConfig.order.visitor }} order-{{ . }}{{ end }}{{ if not $busuanzi.siteViews }} d-none{{ end }}">
+          <span id="busuanzi_container_site_uv" title='{{ T "footer.siteUV" }}'>
+            {{- $iconUV }}<span id="busuanzi_value_site_uv">{{ $loading }}</span>
+          </span>
+          <span id="busuanzi_container_site_pv" class="footer-divider" title='{{ T "footer.sitePV" }}'>
+            {{- $iconPV }}<span id="busuanzi_value_site_pv">{{ $loading }}</span>
+          </span>
+        </div>
+      {{- end -}}
+
+      {{- if $footerConfig.gov | or $footerConfig.icp -}}
+        <div class="footer-line beian{{ with $footerConfig.order.beian }} order-{{ . }}{{ end }}">
+          {{- with $footerConfig.gov -}}
+            <span class="gov">{{ . | safeHTML }}</span>
+          {{- end -}}
+          {{- with $footerConfig.icp -}}
+            <span class="icp footer-divider">{{ . | safeHTML }}</span>
+          {{- end -}}
+        </div>
+      {{- end -}}
+    </div>
+  </footer>
+{{- end -}}

@@ -1,4 +1,174 @@
 /* ================================
+   分类/归档页 Apple 风格（对齐 messywind）
+   ================================ */
+
+/* --- CSS 变量 --- */
+.page.archive {
+  --list-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --list-text: #1d1d1f;
+  --list-muted: #6e6e73;
+  --list-border: rgba(29, 29, 31, 0.09);
+  --list-surface: rgba(245, 245, 247, 0.72);
+  --list-card: rgba(255, 255, 255, 0.72);
+  --list-card-hover: rgba(255, 255, 255, 0.98);
+  --list-accent: #0071e3;
+  --list-accent-soft: rgba(0, 113, 227, 0.1);
+  width: 1080px !important;
+  max-width: 100% !important;
+  color: var(--list-text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+[data-theme='dark'] .page.archive {
+  --list-text: #f5f5f7;
+  --list-muted: #a1a1a6;
+  --list-border: rgba(255, 255, 255, 0.12);
+  --list-surface: rgba(255, 255, 255, 0.07);
+  --list-card: rgba(28, 28, 30, 0.72);
+  --list-card-hover: rgba(44, 44, 46, 0.92);
+}
+
+/* 标题靠左 */
+.page.archive .single-title {
+  text-align: left !important;
+}
+
+/* --- 年份标签：药丸形状 --- */
+.page.archive .group-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  margin: 1.45rem 0 0.75rem;
+  padding: 0.38rem 0.68rem;
+  border: 1px solid var(--list-border);
+  border-radius: 999px;
+  color: var(--list-text);
+  background: var(--list-surface);
+  font-size: 0.94rem;
+  font-weight: 720;
+  line-height: 1;
+}
+
+.page.archive .group-title i {
+  color: var(--list-accent);
+}
+
+/* --- 文章条目：磨砂卡片 --- */
+.page.archive .archive-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  margin: 0 0 0.55rem;
+  padding: 0.72rem 0.85rem;
+  border: 1px solid var(--list-border);
+  border-radius: 8px;
+  background: var(--list-card);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.56) inset;
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  transition: transform 0.24s var(--list-ease), border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+}
+
+[data-theme='dark'] .page.archive .archive-item {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+.page.archive .archive-item:hover,
+.page.archive .archive-item:focus-within {
+  border-color: rgba(0, 113, 227, 0.22);
+  background: var(--list-card-hover);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+  transform: translateX(2px);
+}
+
+[data-theme='dark'] .page.archive .archive-item:hover,
+[data-theme='dark'] .page.archive .archive-item:focus-within {
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+}
+
+/* --- 文章链接 --- */
+.page.archive .archive-item-link {
+  min-width: 0;
+  color: var(--list-text);
+  font-size: 0.98rem;
+  font-weight: 620;
+  line-height: 1.38;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.page.archive .archive-item-link:hover,
+.page.archive .archive-item-link:focus {
+  color: var(--list-accent);
+  background: transparent;
+}
+
+[data-theme='dark'] .page.archive .archive-item-link {
+  color: var(--list-text);
+}
+
+/* --- 日期：药丸形状 --- */
+.page.archive .archive-item-date {
+  display: inline-flex;
+  min-height: 1.72rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.58rem;
+  border-radius: 999px;
+  color: var(--list-muted);
+  background: var(--list-surface);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* --- 分页：药丸按钮 --- */
+.page.archive .pagination .page-link {
+  display: inline-flex;
+  min-width: 2.12rem;
+  height: 2.12rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--list-border);
+  border-radius: 999px;
+  color: var(--list-muted);
+  background: var(--list-surface);
+  font-size: 0.88rem;
+  font-weight: 720;
+  line-height: 1;
+  transition: transform 0.22s var(--list-ease), border-color 0.22s ease, background 0.22s ease, color 0.22s ease;
+}
+
+.page.archive .pagination .page-link a {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.page.archive .pagination .page-item.active .page-link {
+  border-color: var(--list-accent);
+  color: #fff;
+  background: var(--list-accent);
+}
+
+.page.archive .pagination .page-item:not(.active) .page-link:hover,
+.page.archive .pagination .page-item:not(.active) .page-link:focus-within {
+  border-color: rgba(0, 113, 227, 0.2);
+  color: var(--list-accent);
+  background: var(--list-accent-soft);
+  transform: none;
+}
+
+/* ================================
    导航栏居中布局
    ================================ */
 
@@ -59,7 +229,509 @@
    ================================ */
 
 .header-title .logo {
-  width: 26px !important;
-  height: 26px !important;
-  max-height: 26px !important;
+  width: 34px !important;
+  height: 34px !important;
+  max-height: 34px !important;
+}
+
+/* ================================
+   首页 Banner 大图
+   ================================ */
+
+.home-banner {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-bottom: clamp(1.2rem, 2.5vw, 2rem);
+  overflow: hidden;
+  aspect-ratio: 16 / 7;
+}
+
+.home-banner-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.home-banner-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(1rem, 3vw, 2rem);
+  color: #fff;
+}
+
+.home-banner-content h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.02em;
+}
+
+.home-banner-content p {
+  margin: 0.6rem 0 0;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 500;
+  opacity: 0.9;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .home-banner {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ================================
+   Apple 风格关于页面（与 blog.messywind.top 一致）
+   ================================ */
+
+#content:has(.about-profile) {
+  overflow: visible;
+}
+
+.page.single.special:has(.about-profile) {
+  width: 1120px !important;
+}
+
+/* --- CSS 变量 --- */
+.about-profile {
+  --about-text: #f5f5f7;
+  --about-muted: #a1a1a6;
+  --about-soft: #151518;
+  --about-panel: rgba(22, 22, 24, 0.82);
+  --about-panel-solid: rgba(30, 30, 32, 0.92);
+  --about-line: rgba(255, 255, 255, 0.12);
+  --about-blue: #0a84ff;
+  --about-green: #30d158;
+  --about-yellow: #ffd60a;
+  --about-red: #ff453a;
+  --about-icon-bg: rgba(255, 255, 255, 0.08);
+  --about-icon-filter: invert(1) brightness(1.18);
+  --about-shadow: 0 18px 52px rgba(0, 0, 0, 0.32);
+  color: var(--about-text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+[data-theme='light'] .about-profile {
+  --about-text: #1d1d1f;
+  --about-muted: #6e6e73;
+  --about-soft: #f5f5f7;
+  --about-panel: rgba(255, 255, 255, 0.78);
+  --about-panel-solid: #ffffff;
+  --about-line: rgba(29, 29, 31, 0.1);
+  --about-blue: #0071e3;
+  --about-green: #34c759;
+  --about-yellow: #ffd60a;
+  --about-red: #ff3b30;
+  --about-icon-bg: #ffffff;
+  --about-icon-filter: none;
+  --about-shadow: 0 24px 70px rgba(20, 24, 31, 0.1);
+}
+
+.about-profile {
+  display: grid;
+  gap: clamp(0.8rem, 1.3vw, 1.15rem);
+  margin-top: clamp(0.6rem, 1.6vw, 1.2rem);
+}
+
+.about-profile * {
+  box-sizing: border-box;
+  letter-spacing: 0;
+}
+
+/* --- Hero & Section 通用 --- */
+.about-hero,
+.about-section {
+  border: 1px solid var(--about-line);
+  border-radius: 8px;
+  background: var(--about-panel);
+  box-shadow: var(--about-shadow);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+}
+
+.about-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 20rem);
+  gap: clamp(1rem, 2vw, 1.35rem);
+  align-items: end;
+  overflow: hidden;
+  padding: clamp(1.15rem, 3vw, 2.15rem);
+  background: linear-gradient(135deg, rgba(34, 34, 37, 0.98), rgba(10, 10, 12, 0.94)),
+    linear-gradient(120deg, rgba(10, 132, 255, 0.2), rgba(48, 209, 88, 0.1), rgba(255, 214, 10, 0.09));
+}
+
+[data-theme='light'] .about-hero {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(245, 245, 247, 0.74)),
+    linear-gradient(120deg, rgba(0, 113, 227, 0.13), rgba(52, 199, 89, 0.1), rgba(255, 214, 10, 0.14));
+}
+
+/* --- 排版：eyebrow / label --- */
+.about-eyebrow,
+.about-section-head p,
+.about-account span,
+.about-game span,
+.about-contact-item span,
+.about-fact span {
+  margin: 0;
+  color: var(--about-blue);
+  font-size: 0.78rem;
+  font-weight: 850;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.about-hero h2 {
+  margin: 0.45rem 0 0;
+  color: var(--about-text);
+  font-size: clamp(2.55rem, 6vw, 4.45rem);
+  font-weight: 900;
+  line-height: 1.02;
+}
+
+.about-hero-lead {
+  max-width: 39rem;
+  margin: 1rem 0 0;
+  color: var(--about-muted);
+  font-size: clamp(0.96rem, 1.3vw, 1.05rem);
+  font-weight: 620;
+  line-height: 1.75;
+}
+
+.about-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.3rem;
+}
+
+.about-hero-tags span {
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  padding: 0 0.82rem;
+  border: 1px solid rgba(29, 29, 31, 0.09);
+  border-radius: 999px;
+  color: var(--about-text);
+  background: rgba(255, 255, 255, 0.09);
+  font-size: 0.88rem;
+  font-weight: 760;
+  line-height: 1;
+}
+
+[data-theme='light'] .about-hero-tags span {
+  background: rgba(255, 255, 255, 0.58);
+}
+
+/* Hero 头像名片卡 */
+.about-hero-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.95rem;
+  align-items: center;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--about-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='light'] .about-hero-card {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.about-avatar {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.about-hero-card p {
+  margin: 0;
+  color: var(--about-muted);
+  font-size: 0.86rem;
+  font-weight: 780;
+}
+
+.about-hero-card strong {
+  display: block;
+  min-width: 0;
+  margin-top: 0.25rem;
+  overflow-wrap: anywhere;
+  color: var(--about-text);
+  font-size: 1.06rem;
+  font-weight: 880;
+  line-height: 1.2;
+}
+
+/* --- Section --- */
+.about-section {
+  padding: clamp(1rem, 2vw, 1.35rem);
+}
+
+.about-section-head {
+  margin-bottom: 1rem;
+}
+
+.about-section-head h2 {
+  margin: 0.25rem 0 0;
+  color: var(--about-text);
+  font-size: 1.65rem;
+  font-weight: 880;
+  line-height: 1.15;
+}
+
+/* --- Grid 通用 --- */
+.about-fact-grid,
+.about-contact-grid,
+.about-card-grid,
+.about-game-list {
+  display: grid;
+  gap: clamp(0.65rem, 1.2vw, 0.85rem);
+}
+
+.about-fact-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-contact-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(9.25rem, 1fr));
+}
+
+.about-game-list {
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+}
+
+/* --- 卡片通用 --- */
+.about-fact,
+.about-contact-item,
+.about-account,
+.about-game {
+  min-width: 0;
+  border: 1px solid var(--about-line);
+  border-radius: 8px;
+  color: var(--about-text) !important;
+  background: var(--about-panel-solid);
+  text-decoration: none !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.about-fact,
+.about-contact-item {
+  padding: 1rem;
+}
+
+/* --- Fact --- */
+.about-fact strong {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--about-text);
+  font-weight: 850;
+  line-height: 1.24;
+  margin-top: 0.35rem;
+  font-size: 1.02rem;
+}
+
+/* --- Contact --- */
+.about-contact-item {
+  position: relative;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.about-contact-item strong {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--about-text);
+  font-weight: 850;
+  line-height: 1.24;
+  margin-top: 0.35rem;
+  font-size: 1.02rem;
+}
+
+/* QQ 图标 */
+.about-contact-qq::before {
+  display: inline-grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid var(--about-line);
+  border-radius: 8px;
+  background: #12b7f5;
+  content: "Q";
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 1.15rem;
+}
+
+/* FontAwesome 图标容器 */
+.about-contact-icon {
+  display: inline-grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid var(--about-line);
+  border-radius: 8px;
+  background: var(--about-icon-bg);
+  font-size: 1.1rem;
+}
+
+/* --- Account --- */
+.about-account {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  min-height: clamp(7.8rem, 10vw, 8.8rem);
+  padding: 0.9rem;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.about-account-icon {
+  display: inline-grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid var(--about-line);
+  border-radius: 8px;
+  background: var(--about-icon-bg);
+  font-size: 1.2rem;
+}
+
+.about-account strong {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--about-text);
+  font-weight: 850;
+  line-height: 1.24;
+  font-size: 0.98rem;
+}
+
+.about-account p {
+  margin: 0;
+  color: var(--about-blue);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+/* --- Hover --- */
+a.about-contact-item:hover,
+a.about-contact-item:focus,
+a.about-account:hover,
+a.about-account:focus {
+  border-color: rgba(0, 113, 227, 0.35);
+  box-shadow: 0 14px 36px rgba(0, 113, 227, 0.12);
+  transform: translateY(-3px);
+}
+
+/* --- Game --- */
+.about-game {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  padding: 1rem;
+}
+
+.about-game strong {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--about-text);
+  font-weight: 850;
+  line-height: 1.24;
+  margin-top: 0.32rem;
+  font-size: 1rem;
+}
+
+.about-game small {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--about-muted);
+  font-size: 0.84rem;
+}
+
+/* --- 响应式 --- */
+@media (max-width: 980px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero-card {
+    max-width: 24rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .about-fact-grid,
+  .about-contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-fact-grid .about-fact:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .page.single.special:has(.about-profile) {
+    width: 100% !important;
+  }
+
+  .about-fact-grid,
+  .about-contact-grid,
+  .about-fact-grid .about-fact:last-child {
+    grid-template-columns: 1fr;
+    grid-column: auto;
+  }
+
+  .about-account {
+    min-height: 0;
+  }
+
+  .about-hero-card {
+    max-width: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-hero h2 {
+    font-size: 2.35rem;
+  }
+
+  .about-hero-tags span {
+    min-height: 1.85rem;
+    padding: 0 0.68rem;
+    font-size: 0.8rem;
+  }
+
+  .about-game {
+    grid-template-columns: 1fr;
+  }
 }

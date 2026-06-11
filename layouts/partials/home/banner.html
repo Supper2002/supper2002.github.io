@@ -1,0 +1,14 @@
+{{- $banner := .Site.Params.home.banner -}}
+{{- if $banner.enable -}}
+{{- $image := $banner.image | default "/images/banner.jpg" -}}
+<section class="home-banner" aria-label="Banner">
+  <img class="home-banner-img" src="{{ $image }}" alt="{{ $banner.title }}" loading="eager" />
+  <div class="home-banner-overlay"></div>
+  {{- with $banner.title -}}
+  <div class="home-banner-content">
+    <h1>{{ . }}</h1>
+    {{- with $banner.subtitle -}}<p>{{ . }}</p>{{- end -}}
+  </div>
+  {{- end -}}
+</section>
+{{- end -}}

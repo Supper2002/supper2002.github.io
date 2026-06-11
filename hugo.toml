@@ -13,10 +13,10 @@ hasCJKLanguage = true
   dateFormat = "2006-01-02"
 
   [params.author]
-    name = ""
+    name = "Supper2002"
     email = ""
-    link = ""
-    avatar = ""
+    link = "https://github.com/Supper2002"
+    avatar = "/images/avatar.jpg"
 
   [params.header]
     desktopMode = "sticky"
@@ -36,7 +36,7 @@ hasCJKLanguage = true
     [params.footer.powered]
       enable = true
       hugoLogo = true
-      themeLogo = true
+      themeLogo = false
 
   [params.search]
     enable = true
@@ -57,6 +57,11 @@ hasCJKLanguage = true
       ignoreLocation = false
 
   [params.home]
+    [params.home.banner]
+      enable = true
+      image = "/images/banner.jpg"
+      title = "Supper2002"
+      subtitle = ""
     [params.home.profile]
       enable = true
       avatarURL = "/images/avatar.jpg"
@@ -82,12 +87,18 @@ hasCJKLanguage = true
     dateFormat = "01-02"
 
   [params.social]
-    GitHub = ""
+    GitHub = "https://github.com/Supper2002"
     Email = ""
     RSS = true
 
   [params.cookieconsent]
     enable = true
+
+  [params.busuanzi]
+    enable = true
+    source = "https://vercount.one/js"
+    siteViews = true
+    pageViews = true
 
   [params.page]
     lightgallery = false
@@ -116,7 +127,7 @@ hasCJKLanguage = true
     maxShownLines = 10
     copyable = true
 
-# 导航菜单（与参考站保持一致）
+# 导航菜单
 [[menus.main]]
   identifier = "archives"
   name = "归档"
@@ -143,47 +154,20 @@ hasCJKLanguage = true
     icon = "fa-solid fa-trophy fa-fw"
 
 [[menus.main]]
-  identifier = "ml"
-  name = "机器学习"
-  url = "/categories/机器学习/"
-  parent = "study"
-  weight = 2
-  [menus.main.params]
-    icon = "fa-solid fa-gears fa-fw"
-
-[[menus.main]]
-  identifier = "security"
-  name = "网络安全"
-  url = "/categories/网络安全/"
-  parent = "study"
-  weight = 3
-  [menus.main.params]
-    icon = "fa-solid fa-shield fa-fw"
-
-[[menus.main]]
   identifier = "dev"
   name = "开发"
   url = "/categories/开发/"
   parent = "study"
-  weight = 4
+  weight = 2
   [menus.main.params]
     icon = "fa-solid fa-code fa-fw"
-
-[[menus.main]]
-  identifier = "math"
-  name = "数学"
-  url = "/categories/数学/"
-  parent = "study"
-  weight = 5
-  [menus.main.params]
-    icon = "fa-solid fa-square-root-variable fa-fw"
 
 [[menus.main]]
   identifier = "blog-study"
   name = "博客"
   url = "/categories/博客/"
   parent = "study"
-  weight = 6
+  weight = 3
   [menus.main.params]
     icon = "fa-solid fa-file fa-fw"
 
@@ -196,12 +180,30 @@ hasCJKLanguage = true
   [menus.main.params]
     icon = "fa-solid fa-pencil fa-fw"
 
+# 工作
+[[menus.main]]
+  identifier = "work"
+  name = "工作"
+  url = "/categories/工作/"
+  weight = 4
+  [menus.main.params]
+    icon = "fa-solid fa-briefcase fa-fw"
+
+# 成长经历
+[[menus.main]]
+  identifier = "growth"
+  name = "成长经历"
+  url = "/categories/成长经历/"
+  weight = 5
+  [menus.main.params]
+    icon = "fa-solid fa-seedling fa-fw"
+
 # 照片墙
 [[menus.main]]
   identifier = "photos"
   name = "照片墙"
   url = "/photos-wall/"
-  weight = 4
+  weight = 6
   [menus.main.params]
     icon = "fa-solid fa-camera fa-fw"
 
@@ -210,7 +212,7 @@ hasCJKLanguage = true
   identifier = "game"
   name = "游戏"
   url = "/categories/游戏/"
-  weight = 5
+  weight = 7
   [menus.main.params]
     icon = "fa-solid fa-gamepad fa-fw"
 
@@ -219,7 +221,7 @@ hasCJKLanguage = true
   identifier = "ebooks"
   name = "电子书"
   url = "/categories/电子书/"
-  weight = 6
+  weight = 8
   [menus.main.params]
     icon = "fa-solid fa-book fa-fw"
 
@@ -228,7 +230,7 @@ hasCJKLanguage = true
   identifier = "tags"
   name = "标签"
   url = "/tags/"
-  weight = 7
+  weight = 9
   [menus.main.params]
     icon = "fa-solid fa-tags fa-fw"
 
@@ -237,7 +239,7 @@ hasCJKLanguage = true
   identifier = "friends"
   name = "友链"
   url = "/friends/"
-  weight = 8
+  weight = 10
   [menus.main.params]
     icon = "fa-solid fa-link fa-fw"
 
@@ -246,7 +248,7 @@ hasCJKLanguage = true
   identifier = "about"
   name = "关于我"
   url = "/about/"
-  weight = 9
+  weight = 11
   [menus.main.params]
     icon = "fa-solid fa-info-circle fa-fw"
 
