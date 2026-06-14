@@ -4,6 +4,7 @@ title = "Hello Supper2002"
 theme = "FixIt"
 enableGitInfo = true
 hasCJKLanguage = true
+buildFuture = true
 
 [params]
   version = "0.4.X"
@@ -121,6 +122,10 @@ hasCJKLanguage = true
     [params.page.comment]
       enable = false
 
+  # 图片优化：自动转 WebP、压缩、生成响应式 srcset
+  [params.image]
+    optimise = true
+
   [params.codeblock]
     wrapper = true
     mode = "mac"
@@ -161,15 +166,6 @@ hasCJKLanguage = true
   weight = 2
   [menus.main.params]
     icon = "fa-solid fa-code fa-fw"
-
-[[menus.main]]
-  identifier = "blog-study"
-  name = "博客"
-  url = "/categories/博客/"
-  parent = "study"
-  weight = 3
-  [menus.main.params]
-    icon = "fa-solid fa-file fa-fw"
 
 # 记录
 [[menus.main]]
