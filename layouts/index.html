@@ -6,53 +6,156 @@
 {{- end -}}
 
 {{- define "content" -}}
-  {{- $params := partial "function/params.html" -}}
-  {{- $profile := .Site.Params.home.profile -}}
-  {{- $posts := .Site.Params.home.posts -}}
-  {{- $pages := slice -}}
+  <div class="page home">
+    {{- partial "home/banner.html" . -}}
 
-  {{- /* Paginate calculation */ -}}
-  {{- if ne $posts.enable false -}}
-    {{- $pages = .Site.Store.Get "mainSectionPages" -}}
-    {{- if .Site.Params.page.hiddenFromHomePage -}}
-      {{- $pages = where $pages "Params.hiddenfromhomepage" false -}}
-    {{- else -}}
-      {{- $pages = where $pages "Params.hiddenfromhomepage" "!=" true -}}
-    {{- end -}}
-    {{- with $posts.paginate | default .Site.Params.paginate -}}
-      {{- $pages = $.Paginate $pages . -}}
-    {{- else -}}
-      {{- $pages = .Paginate $pages -}}
-    {{- end -}}
-  {{- end -}}
+    {{- /* ========================================
+         首页 Portal：叙事式个人门户
+         文案直接编辑下方对应 section 的 HTML
+         ======================================== */ -}}
+    <div class="home-portal">
 
-  <div class="page home{{ if ne $posts.enable false }} posts{{ end }}">
-    {{- /* Only show profile and content on first page */ -}}
-    {{- if (not $profile.onlyFirstPage) | or (eq $.Paginator.PageNumber 1) -}}
-      {{- /* Banner */ -}}
-      {{- partial "home/banner.html" . -}}
-
-      {{- /* Profile */ -}}
-      {{- if ne $profile.enable false -}}
-        {{- partial "home/profile.html" . -}}
-      {{- end -}}
-
-      {{- /* Content */ -}}
-      {{- if .Content -}}
-        <div class="single">
-          <div class="content" id="content">
-            {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
+      {{- /* ---- 介绍卡片（开场白）---- */ -}}
+      {{- $totalPosts := len .Site.RegularPages -}}
+      {{- $totalCats := len .Site.Taxonomies.categories -}}
+      {{- $totalTags := len .Site.Taxonomies.tags -}}
+      <section class="portal-intro">
+        <div class="portal-intro-card">
+          <div class="portal-intro-bg"></div>
+          <div class="portal-intro-content">
+            <div class="portal-intro-avatar">
+              <img src="/images/avatar.jpg" alt="Supper2002" width="88" height="88" loading="eager" />
+            </div>
+            <p class="portal-intro-greeting">— 你好，我是</p>
+            <h1 class="portal-intro-name">Supper2002</h1>
+            <p class="portal-intro-tagline">
+              常驻中国，写算法、写代码，也记录成长和日常。<br />
+              博客是我慢慢整理自己的地方。
+            </p>
+            <div class="portal-intro-chips">
+              <span class="chip"><i class="fa-solid fa-trophy"></i>算法竞赛</span>
+              <span class="chip"><i class="fa-solid fa-code"></i>后端开发</span>
+              <span class="chip"><i class="fa-solid fa-seedling"></i>成长记录</span>
+            </div>
+            <blockquote class="portal-intro-quote">
+              <span class="quote-mark">"</span>
+              想清楚一件事就写下来，踩过坑就做笔记。<br />
+              这里更像一份持续更新的个人轨迹。
+            </blockquote>
+            <div class="portal-intro-stats">
+              <div class="stat">
+                <span class="stat-num">{{ $totalPosts }}</span>
+                <span class="stat-label">篇文章</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <span class="stat-num">{{ $totalCats }}</span>
+                <span class="stat-label">个分类</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <span class="stat-num">{{ $totalTags }}</span>
+                <span class="stat-label">个标签</span>
+              </div>
+            </div>
           </div>
         </div>
-      {{- end -}}
-    {{- end -}}
+      </section>
 
-    {{- /* Paginate rendering */ -}}
-    {{- if ne $posts.enable false -}}
-      {{- range $pages.Pages -}}
-        {{- .Render "summary" -}}
-      {{- end -}}
-      {{- partial "paginator.html" . -}}
-    {{- end -}}
+      {{- /* ---- 01 内容线索 ---- */ -}}
+      <section class="portal-section">
+        <header class="portal-section-head">
+          <span class="portal-section-label">01 / 内容线索</span>
+          <h2 class="portal-section-title">我在这里写什么</h2>
+          <p class="portal-section-desc">
+            这些是我现在最常写下来的几条线 ——<br />
+            沿着这些线索，可以专注地认识我。
+          </p>
+        </header>
+        <ul class="portal-topics-narrative">
+          {{- $taxCats := .Site.Taxonomies.categories -}}
+          {{- range .Site.Menus.main -}}
+            {{- if hasPrefix .URL "/categories/" -}}
+              {{- partial "home/portal-topic.html" (dict "Ctx" . "TaxCats" $taxCats) -}}
+            {{- end -}}
+            {{- if .HasChildren -}}
+              {{- range .Children -}}
+                {{- if hasPrefix .URL "/categories/" -}}
+                  {{- partial "home/portal-topic.html" (dict "Ctx" . "TaxCats" $taxCats) -}}
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+        </ul>
+      </section>
+
+      {{- /* ---- 02 时间线（按月活动列表，不显示文章标题）---- */ -}}
+      <section class="portal-section">
+        <header class="portal-section-head">
+          <span class="portal-section-label">02 / 时间线</span>
+          <h2 class="portal-section-title">从时间线回看我</h2>
+          <p class="portal-section-desc">
+            按月份翻回去，<br />
+            可以看到我在不同阶段把注意力放在哪里。
+          </p>
+        </header>
+        <ul class="portal-timeline-list">
+          {{- $monthGroups := where (.Site.RegularPages.GroupByDate "2006-01").Reverse "Key" "!=" "0001-01" -}}
+          {{- range first 6 $monthGroups -}}
+          <li>
+            <a href="/archives/">
+              <span class="row-icon"><i class="fa-solid fa-calendar-day"></i></span>
+              <span class="row-name">{{ .Key }}</span>
+              <span class="row-dash">—</span>
+              <span class="row-desc">{{ len .Pages }} 篇内容</span>
+              <span class="row-count">{{ len .Pages }}</span>
+            </a>
+          </li>
+          {{- end -}}
+        </ul>
+        <a class="portal-cta" href="/archives/">看看我写过什么 →</a>
+      </section>
+
+      {{- /* ---- 03 在别处（行式列表）---- */ -}}
+      <section class="portal-section">
+        <header class="portal-section-head">
+          <span class="portal-section-label">03 / 在别处</span>
+          <h2 class="portal-section-title">也可以在别处找到我</h2>
+          <p class="portal-section-desc">如果这里不够，下面这些地方也能找到我。</p>
+        </header>
+        <ul class="portal-contact-list">
+          <li>
+            <a href="https://github.com/Supper2002" target="_blank" rel="noopener noreferrer">
+              <span class="row-icon"><i class="fa-brands fa-github-alt"></i></span>
+              <span class="row-name">GitHub</span>
+              <span class="row-dash">—</span>
+              <span class="row-desc">代码和折腾</span>
+              <span class="row-arrow">↗</span>
+            </a>
+          </li>
+          {{- with .Site.Params.social.Email -}}
+          <li>
+            <a href="mailto:{{ . }}">
+              <span class="row-icon"><i class="fa-regular fa-envelope"></i></span>
+              <span class="row-name">Email</span>
+              <span class="row-dash">—</span>
+              <span class="row-desc">邮件交流</span>
+              <span class="row-arrow">↗</span>
+            </a>
+          </li>
+          {{- end -}}
+          <li>
+            <a href="/index.xml">
+              <span class="row-icon"><i class="fa-solid fa-rss"></i></span>
+              <span class="row-name">RSS</span>
+              <span class="row-dash">—</span>
+              <span class="row-desc">订阅更新</span>
+              <span class="row-arrow">↗</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </div>{{- /* /.home-portal */ -}}
   </div>
 {{- end -}}

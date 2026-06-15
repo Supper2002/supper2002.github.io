@@ -64,7 +64,7 @@ buildFuture = true
       title = "Supper2002"
       subtitle = ""
     [params.home.profile]
-      enable = true
+      enable = false
       avatarURL = "/images/avatar.jpg"
       title = ""
       subtitle = "欢迎来到我的个人博客"
@@ -72,7 +72,7 @@ buildFuture = true
       social = true
       disclaimer = ""
     [params.home.posts]
-      enable = true
+      enable = false
       paginate = 6
 
   [params.archives]

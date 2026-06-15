@@ -2,7 +2,6 @@
 title: "牛客周赛148"
 date: 2026-06-14
 draft: false
-hiddenFromHomePage: true
 categories:
   - 算法竞赛
 tags:

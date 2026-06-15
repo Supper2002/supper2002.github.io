@@ -1,0 +1,32 @@
+{{- /* 渲染首页 portal 分类项（行式列表）
+     传入 dict: Ctx (menu entry) + TaxCats (.Site.Taxonomies.categories)
+     分类描述在下方 dict 维护，改文案只改这里
+     子元素 class 用 .row-* 与 02/03 列表共享样式 */ -}}
+{{- $descriptions := dict
+  "算法竞赛"  "题解、复盘，和那些差一点 AK 的瞬间"
+  "开发"     "技术分享、工具折腾与项目实践"
+  "工作"     "团队内部的技术分享与心得"
+  "成长经历"  "从小到大的经历、踩过的坑"
+  "记录"     "日常片段、心情与突然冒出来的想法"
+  "游戏"     "游戏记录与片段"
+  "电子书"   "读书笔记与整理"
+-}}
+{{- /* 用 .Ctx.Name（字面中文）查 taxonomy，避开 URL 编码问题 */ -}}
+{{- $count := 0 -}}
+{{- with index .TaxCats .Ctx.Name -}}
+  {{- $count = len .Pages -}}
+{{- end -}}
+{{- $desc := index $descriptions .Ctx.Name | default "敬请期待" -}}
+<li>
+  <a href="{{ .Ctx.URL }}">
+    <span class="row-icon"><i class="{{ .Ctx.Params.Icon }}"></i></span>
+    <span class="row-name">{{ .Ctx.Name }}</span>
+    <span class="row-dash">—</span>
+    <span class="row-desc">{{ $desc }}</span>
+    {{- if gt $count 0 -}}
+      <span class="row-count">{{ $count }} 篇</span>
+    {{- else -}}
+      <span class="row-count coming-soon">敬请期待</span>
+    {{- end -}}
+  </a>
+</li>

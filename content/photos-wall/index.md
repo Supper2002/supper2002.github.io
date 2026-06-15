@@ -44,6 +44,96 @@ lightgallery: false
 
 </section>
 
+<section class="pw-group" data-location="绍兴" markdown="1">
+<h3><span class="pw-time-head"><i class="fa-regular fa-calendar"></i> 2026年4月</span><span class="pw-location-head"><i class="fa-solid fa-location-dot"></i> 绍兴</span></h3>
+
+![20260405_093858](2026-04/IMG_20260405_093858..jpg)
+
+</section>
+
+<section class="pw-group" data-location="成都" markdown="1">
+<h3><span class="pw-time-head"><i class="fa-regular fa-calendar"></i> 2025年12月</span><span class="pw-location-head"><i class="fa-solid fa-location-dot"></i> 成都</span></h3>
+
+![20251122_154251](2025-12/IMG_20251122_154251..jpg)
+
+![20251124_214228](2025-12/IMG_20251124_214228..jpg)
+
+![20251130_110317](2025-12/IMG_20251130_110317..jpg)
+
+![20251130_110328](2025-12/IMG_20251130_110328..jpg)
+
+![20251130_112757](2025-12/IMG_20251130_112757..jpg)
+
+![20251130_113310](2025-12/IMG_20251130_113310..jpg)
+
+![20251130_115902](2025-12/IMG_20251130_115902..jpg)
+
+</section>
+
+<section class="pw-group" data-location="重庆" markdown="1">
+<h3><span class="pw-time-head"><i class="fa-regular fa-calendar"></i> 2025年12月</span><span class="pw-location-head"><i class="fa-solid fa-location-dot"></i> 重庆</span></h3>
+
+![20251227_194240](2025-12/IMG_20251227_194240..jpg)
+
+![20251227_205440](2025-12/IMG_20251227_205440..jpg)
+
+</section>
+
+<section class="pw-group" data-location="广州" markdown="1">
+<h3><span class="pw-time-head"><i class="fa-regular fa-calendar"></i> 2025年10月</span><span class="pw-location-head"><i class="fa-solid fa-location-dot"></i> 广州</span></h3>
+
+![20251030_212019](2025-10/IMG_20251030_212019..jpg)
+
+</section>
+
+<section class="pw-group" data-location="北京" markdown="1">
+<h3><span class="pw-time-head"><i class="fa-regular fa-calendar"></i> 2025年5月</span><span class="pw-location-head"><i class="fa-solid fa-location-dot"></i> 北京</span></h3>
+
+![20240608_134138](2025-05/IMG_20240608_134138..jpg)
+
+![20240610_061855](2025-05/IMG_20240610_061855..jpg)
+
+![20240610_062836](2025-05/IMG_20240610_062836..jpg)
+
+![20240610_075633](2025-05/IMG_20240610_075633..jpg)
+
+![20250608_095816](2025-05/IMG_20250608_095816..jpg)
+
+![20250615_104421](2025-05/IMG_20250615_104421..jpg)
+
+</section>
+
+<section class="pw-group" data-location="杭州" markdown="1">
+<h3><span class="pw-time-head"><i class="fa-regular fa-calendar"></i> 2024年10月</span><span class="pw-location-head"><i class="fa-solid fa-location-dot"></i> 杭州</span></h3>
+
+![20241004_161950](2024-10/IMG_20241004_161950..jpg)
+
+![20241004_171117](2024-10/IMG_20241004_171117..jpg)
+
+![20250308_151103](2024-10/IMG_20250308_151103..jpg)
+
+</section>
+
+<section class="pw-group" data-location="南京" markdown="1">
+<h3><span class="pw-time-head"><i class="fa-regular fa-calendar"></i> 2022年12月</span><span class="pw-location-head"><i class="fa-solid fa-location-dot"></i> 南京</span></h3>
+
+![mmexport1673265606807](2022-12/mmexport1673265606807..jpg)
+
+![mmexport1673265611353](2022-12/mmexport1673265611353..jpg)
+
+</section>
+
+<section class="pw-group" data-location="洛阳" markdown="1">
+<h3><span class="pw-time-head"><i class="fa-regular fa-calendar"></i> 2020年8月</span><span class="pw-location-head"><i class="fa-solid fa-location-dot"></i> 洛阳</span></h3>
+
+![20200809_120030](2020-08/IMG_20200809_120030..jpg)
+
+![20200809_132410](2020-08/IMG_20200809_132410..jpg)
+
+![20200809132129](2020-08/IMG20200809132129..jpg)
+
+</section>
+
 </div>
 
 </div>
@@ -57,9 +147,35 @@ lightgallery: false
   "棕榈": {"date":"2026-06-07","camera":"HONOR 400 Pro","location":"深圳·大梅沙","note":"南国的风穿过棕榈叶"},
   "海滨公园": {"date":"2026-06-07","camera":"HONOR 400 Pro","location":"深圳·大梅沙","note":"草坪把海拉到了眼前"},
   "合影": {"date":"2026-06-07","camera":"HONOR 400 Pro","location":"深圳·大梅沙","note":"海风里的我们"},
-  "生日蛋糕": {"date":"2026-05-17","camera":"HONOR 400 Pro","location":"杭州","note":"烛光里的又一年"}
+  "生日蛋糕": {"date":"2026-05-17","camera":"HONOR 400 Pro","location":"杭州","note":"烛光里的又一年"},
+  "20260405_093858": {"date":"2026-04-05","camera":"HONOR 400 Pro","location":"绍兴·鲁迅故里","note":"乌篷船摇过的旧时光"},
+  "20251122_154251": {"date":"2025-11-22","camera":"HONOR 400 Pro","location":"成都·春熙路","note":"霓虹淌过锦官城"},
+  "20251124_214228": {"date":"2025-11-24","camera":"HONOR 400 Pro","location":"成都·双子塔","note":"双子塔下的不夜城"},
+  "20251130_110317": {"date":"2025-11-30","camera":"HONOR 400 Pro","location":"成都·大熊猫基地","note":"黑白相间的慵懒"},
+  "20251130_110328": {"date":"2025-11-30","camera":"HONOR 400 Pro","location":"成都·大熊猫基地","note":"竹林里的圆滚滚"},
+  "20251130_112757": {"date":"2025-11-30","camera":"HONOR 400 Pro","location":"成都·大熊猫基地","note":"抱竹而食的午后"},
+  "20251130_113310": {"date":"2025-11-30","camera":"HONOR 400 Pro","location":"成都·大熊猫基地","note":"慢悠悠的故乡"},
+  "20251130_115902": {"date":"2025-11-30","camera":"HONOR 400 Pro","location":"成都·大熊猫基地","note":"国宝的日常"},
+  "20251227_194240": {"date":"2025-12-27","camera":"HONOR 400 Pro","location":"重庆·洪崖洞","note":"吊脚楼亮成了千与千寻"},
+  "20251227_205440": {"date":"2025-12-27","camera":"HONOR 400 Pro","location":"重庆·洪崖洞","note":"江雾里的山城夜色"},
+  "20251030_212019": {"date":"2025-10-30","camera":"HONOR 30","location":"广州","note":"花城夜色暖"},
+  "20240608_134138": {"date":"2024-06-08","camera":"HONOR 30","location":"北京·天安门","note":"初见京华"},
+  "20240610_061855": {"date":"2024-06-10","camera":"HONOR 30","location":"北京·慕田峪长城","note":"长城蜿蜒入云端"},
+  "20240610_062836": {"date":"2024-06-10","camera":"HONOR 30","location":"北京·慕田峪长城","note":"好汉坡上的风"},
+  "20240610_075633": {"date":"2024-06-10","camera":"HONOR 30","location":"北京·慕田峪长城","note":"青砖踩过千年"},
+  "20250608_095816": {"date":"2025-06-08","camera":"HONOR 30","location":"北京·天安门","note":"再访天安门前"},
+  "20250615_104421": {"date":"2025-06-15","camera":"HONOR 30","location":"北京·故宫","note":"红墙黄瓦的旧时光"},
+  "20241004_161950": {"date":"2024-10-04","camera":"HONOR 30","location":"杭州·西湖","note":"淡妆浓抹总相宜"},
+  "20241004_171117": {"date":"2024-10-04","camera":"HONOR 30","location":"杭州·西湖","note":"一湖山色入画来"},
+  "20250308_151103": {"date":"2025-03-08","camera":"HONOR 30","location":"杭州·西溪湿地","note":"芦苇荡里的水乡"},
+  "mmexport1673265606807": {"date":"2022-12-12","camera":"HONOR 30","location":"南京","note":"金陵旧梦一场"},
+  "mmexport1673265611353": {"date":"2022-12-12","camera":"HONOR 30","location":"南京","note":"秦淮河畔的灯火"},
+  "20200809_120030": {"date":"2020-08-09","camera":"HONOR 30","location":"洛阳·老君山","note":"云海漫过山巅"},
+  "20200809_132410": {"date":"2020-08-09","camera":"HONOR 30","location":"洛阳·老君山","note":"金顶之上览群山"},
+  "20200809132129": {"date":"2020-08-09","camera":"HONOR 30","location":"洛阳·老君山","note":"远赴人间惊鸿宴"}
 }
 </script>
+
 
 <div class="pw-lightbox" id="pw-lightbox" hidden>
   <div class="pw-lightbox-bg" id="pw-lightbox-bg"></div>

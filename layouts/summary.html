@@ -1,0 +1,73 @@
+{{- $params := .Params | merge .Site.Params.page -}}
+{{- $image := $params.featuredimagepreview | default $params.featuredimage -}}
+{{- $hasImage := false -}}
+{{- if or $image (or (.Resources.GetMatch "featured-image-preview") (.Resources.GetMatch "featured-image")) -}}
+  {{- $hasImage = true -}}
+{{- end -}}
+{{- /* 取首个分类作为配色 key（fallback "default"）*/ -}}
+{{- $firstCat := "default" -}}
+{{- with index (.GetTerms "categories") 0 -}}
+  {{- $firstCat = .LinkTitle -}}
+{{- end -}}
+
+<article class="single summary" itemscope itemtype="http://schema.org/Article">
+  {{- /* 封面图 OR 渐变占位 */ -}}
+  <div class="card-cover-wrap">
+    <a href="{{ .RelPermalink }}" class="card-link" aria-label="{{ .Title }}">
+      {{- if $hasImage -}}
+        <div class="featured-image-preview">
+          {{- $matches := slice -}}
+          {{- if .Resources.GetMatch "featured-image-preview" -}}{{- $matches = $matches | append "featured-image-preview" -}}
+          {{- else if .Resources.GetMatch "featured-image" -}}{{- $matches = $matches | append "featured-image" -}}
+          {{- end -}}
+          {{- $optim := slice
+            (dict "Process" "fill 600x338 Center webp" "descriptor" "600w")
+            (dict "Process" "fill 900x506 Center webp" "descriptor" "900w")
+          -}}
+          {{- dict "Src" $image "Title" $.Title "Resources" $.Resources "Matches" $matches "Loading" "lazy" "Width" "600" "Height" "338" "Sizes" "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" "OptimConfig" $optim "Alt" (printf "Featured image for %v" $.Title) | partial "plugin/image.html" -}}
+        </div>
+      {{- else -}}
+        <div class="card-cover" data-cat="{{ $firstCat }}">
+          <span class="cat-label">{{ $firstCat }}</span>
+          <span class="cat-letter">{{ substr .Title 0 1 }}</span>
+        </div>
+      {{- end -}}
+    </a>
+  </div>
+
+  {{- /* 标题 */ -}}
+  <h2 class="single-title" itemprop="name headline">
+    <a href="{{ .RelPermalink }}">{{ cond (.Param "capitalizeTitles") (title .Title) .Title }}</a>
+  </h2>
+
+  {{- /* meta：只保留日期 + 分类 */ -}}
+  <div class="post-meta post-meta-simple">
+    {{- with .PublishDate | dateFormat (.Site.Params.dateFormat | default "2006-01-02") -}}
+      <span class="post-date"><i class="fa-regular fa-calendar"></i>&nbsp;{{ . }}</span>
+    {{- end -}}
+    {{- with $firstCat }}{{- if ne . "default" -}}
+      <span class="post-cat"><i class="fa-solid fa-folder"></i>&nbsp;{{ . }}</span>
+    {{- end -}}{{- end -}}
+  </div>
+
+  {{- /* 摘要（line-clamp）*/ -}}
+  <div class="content summary-content">
+    {{- if .Summary -}}
+      {{- $plainify := (.Param "summaryPlainify") | default false -}}
+      {{- with .Markup "home" -}}
+        {{- with .Render -}}
+          {{- $summary := dict "Content" .Summary.Text "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
+          {{- cond $plainify ($summary | plainify) $summary -}}
+        {{- end -}}
+      {{- end -}}
+    {{- else -}}
+      {{- .Description | safeHTML -}}
+    {{- end -}}
+  </div>
+
+  {{- /* footer：阅读全文 */ -}}
+  <div class="post-footer">
+    <a class="read-more" href="{{ .RelPermalink }}">{{ T "single.readMore" | default "阅读全文" }} →</a>
+  </div>
+</article>
+{{- /* EOF */ -}}
