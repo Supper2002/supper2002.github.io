@@ -1,0 +1,45 @@
+{{- define "title" -}}
+  {{- .Title }} - {{ T .Data.Singular | default .Data.Singular -}}
+  {{- if .Site.Params.withSiteTitle }} {{ .Site.Params.titleDelimiter }} {{ .Site.Title }}{{- end -}}
+{{- end -}}
+
+{{- define "content" -}}
+  <div class="page archive">
+    {{- /* 标题 */ -}}
+    {{- $taxonomy := .Data.Singular -}}
+    {{- $pageCount := len .Pages -}}
+    {{- $termIcon := "" -}}
+    {{- $termTitle := .Title -}}
+    {{- if eq $taxonomy "category" -}}
+      {{- $termIcon = "fa-regular fa-folder-open" -}}
+    {{- else if eq $taxonomy "tag" -}}
+      {{- $termIcon = "fa-solid fa-tag" -}}
+    {{- else if eq $taxonomy "collection" -}}
+      {{- $termIcon = "fa-solid fa-layer-group" -}}
+    {{- else -}}
+      {{- $termTitle = printf "%v - %v" (T $taxonomy | default $taxonomy) .Title -}}
+    {{- end -}}
+    <h1 class="single-title animate__animated animate__pulse animate__faster">
+      {{- with $termIcon -}}
+        {{- dict "Class" (add . " me-1") | partial "plugin/icon.html" -}}
+      {{- end -}}
+      {{- $termTitle }} <sup>{{ $pageCount }}</sup>
+    </h1>
+
+    {{- /* summary 卡片网格（替换原归档式列表）*/ -}}
+    {{- if .Pages -}}
+      {{- $pages := .Pages -}}
+      {{- with .Site.Params.list.paginate | default .Site.Params.paginate -}}
+        {{- $pages = $.Paginate $pages . -}}
+      {{- else -}}
+        {{- $pages = .Paginate $pages -}}
+      {{- end -}}
+      <div class="summary-grid">
+        {{- range $pages.Pages -}}
+          {{- .Render "summary" -}}
+        {{- end -}}
+      </div>
+      {{- partial "paginator.html" . -}}
+    {{- end -}}
+  </div>
+{{- end -}}

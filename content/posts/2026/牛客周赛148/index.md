@@ -2,6 +2,9 @@
 title: "牛客周赛148"
 date: 2026-06-14
 draft: false
+resources:
+  - name: featured-image
+    src: featured-image.jpg
 categories:
   - 算法竞赛
 tags:

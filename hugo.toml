@@ -84,7 +84,7 @@ buildFuture = true
     dateFormat = "01-02"
 
   [params.list]
-    paginate = 20
+    paginate = 6
     dateFormat = "01-02"
 
   [params.social]

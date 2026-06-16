@@ -10,6 +10,9 @@ tags:
   - 随笔
 password: "6831"
 message: "该内容已加密，请输入密码查看"
+resources:
+  - name: featured-image
+    src: featured-image.jpg
 ---
 
 ## 童年

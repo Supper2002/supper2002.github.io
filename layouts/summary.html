@@ -11,7 +11,7 @@
 {{- end -}}
 
 <article class="single summary" itemscope itemtype="http://schema.org/Article">
-  {{- /* 封面图 OR 渐变占位 */ -}}
+  {{- /* 封面图 OR 渐变占位（左栏）*/ -}}
   <div class="card-cover-wrap">
     <a href="{{ .RelPermalink }}" class="card-link" aria-label="{{ .Title }}">
       {{- if $hasImage -}}
@@ -21,10 +21,10 @@
           {{- else if .Resources.GetMatch "featured-image" -}}{{- $matches = $matches | append "featured-image" -}}
           {{- end -}}
           {{- $optim := slice
-            (dict "Process" "fill 600x338 Center webp" "descriptor" "600w")
-            (dict "Process" "fill 900x506 Center webp" "descriptor" "900w")
+            (dict "Process" "fill 600x600 Center webp" "descriptor" "600w")
+            (dict "Process" "fill 900x900 Center webp" "descriptor" "900w")
           -}}
-          {{- dict "Src" $image "Title" $.Title "Resources" $.Resources "Matches" $matches "Loading" "lazy" "Width" "600" "Height" "338" "Sizes" "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" "OptimConfig" $optim "Alt" (printf "Featured image for %v" $.Title) | partial "plugin/image.html" -}}
+          {{- dict "Src" $image "Title" $.Title "Resources" $.Resources "Matches" $matches "Loading" "lazy" "Width" "600" "Height" "600" "Sizes" "(max-width: 640px) 100vw, 300px" "OptimConfig" $optim "Alt" (printf "Featured image for %v" $.Title) | partial "plugin/image.html" -}}
         </div>
       {{- else -}}
         <div class="card-cover" data-cat="{{ $firstCat }}">
@@ -35,39 +35,42 @@
     </a>
   </div>
 
-  {{- /* 标题 */ -}}
-  <h2 class="single-title" itemprop="name headline">
-    <a href="{{ .RelPermalink }}">{{ cond (.Param "capitalizeTitles") (title .Title) .Title }}</a>
-  </h2>
+  {{- /* 右栏：标题 + meta + 摘要 + 阅读全文 */ -}}
+  <div class="card-body">
+    {{- /* 标题 */ -}}
+    <h2 class="single-title" itemprop="name headline">
+      <a href="{{ .RelPermalink }}">{{ cond (.Param "capitalizeTitles") (title .Title) .Title }}</a>
+    </h2>
 
-  {{- /* meta：只保留日期 + 分类 */ -}}
-  <div class="post-meta post-meta-simple">
-    {{- with .PublishDate | dateFormat (.Site.Params.dateFormat | default "2006-01-02") -}}
-      <span class="post-date"><i class="fa-regular fa-calendar"></i>&nbsp;{{ . }}</span>
-    {{- end -}}
-    {{- with $firstCat }}{{- if ne . "default" -}}
-      <span class="post-cat"><i class="fa-solid fa-folder"></i>&nbsp;{{ . }}</span>
-    {{- end -}}{{- end -}}
-  </div>
-
-  {{- /* 摘要（line-clamp）*/ -}}
-  <div class="content summary-content">
-    {{- if .Summary -}}
-      {{- $plainify := (.Param "summaryPlainify") | default false -}}
-      {{- with .Markup "home" -}}
-        {{- with .Render -}}
-          {{- $summary := dict "Content" .Summary.Text "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
-          {{- cond $plainify ($summary | plainify) $summary -}}
-        {{- end -}}
+    {{- /* meta：只保留日期 + 分类 */ -}}
+    <div class="post-meta post-meta-simple">
+      {{- with .PublishDate | dateFormat (.Site.Params.dateFormat | default "2006-01-02") -}}
+        <span class="post-date"><i class="fa-regular fa-calendar"></i>&nbsp;{{ . }}</span>
       {{- end -}}
-    {{- else -}}
-      {{- .Description | safeHTML -}}
-    {{- end -}}
-  </div>
+      {{- with $firstCat }}{{- if ne . "default" -}}
+        <span class="post-cat"><i class="fa-solid fa-folder"></i>&nbsp;{{ . }}</span>
+      {{- end -}}{{- end -}}
+    </div>
 
-  {{- /* footer：阅读全文 */ -}}
-  <div class="post-footer">
-    <a class="read-more" href="{{ .RelPermalink }}">{{ T "single.readMore" | default "阅读全文" }} →</a>
+    {{- /* 摘要（line-clamp）*/ -}}
+    <div class="content summary-content">
+      {{- if .Summary -}}
+        {{- $plainify := (.Param "summaryPlainify") | default false -}}
+        {{- with .Markup "home" -}}
+          {{- with .Render -}}
+            {{- $summary := dict "Content" .Summary.Text "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
+            {{- cond $plainify ($summary | plainify) $summary -}}
+          {{- end -}}
+        {{- end -}}
+      {{- else -}}
+        {{- .Description | safeHTML -}}
+      {{- end -}}
+    </div>
+
+    {{- /* footer：阅读全文 */ -}}
+    <div class="post-footer">
+      <a class="read-more" href="{{ .RelPermalink }}">{{ T "single.readMore" | default "阅读全文" }} →</a>
+    </div>
   </div>
 </article>
 {{- /* EOF */ -}}

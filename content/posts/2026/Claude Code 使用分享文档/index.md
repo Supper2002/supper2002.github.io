@@ -8,6 +8,9 @@ categories:
 tags:
   - AI
   - 技术分享
+resources:
+  - name: featured-image
+    src: featured-image.jpg
 ---
 
 

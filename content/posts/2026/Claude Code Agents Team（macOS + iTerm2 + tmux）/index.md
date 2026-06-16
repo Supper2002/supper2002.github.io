@@ -8,6 +8,9 @@ categories:
 tags:
   - AI
   - 技术分享
+resources:
+  - name: featured-image
+    src: featured-image.jpg
 ---
 
 # Claude Code 与 OpenCode（on-my-opencode）使用指南与深度对比  

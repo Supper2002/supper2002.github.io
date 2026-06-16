@@ -1672,3 +1672,197 @@ a.about-account:focus {
 [data-theme='dark'] .portal-contact-list > li:hover {
   background: rgba(0, 113, 227, 0.1);
 }
+
+/* ================================
+   Summary 横向卡片列表（分类/标签页）
+   左封面图 + 右标题/摘要，配合 layouts/summary.html 使用
+   ================================ */
+.summary-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.single.summary {
+  display: flex;
+  flex-direction: row;
+  background: var(--portal-card-bg, #fff);
+  border: 1px solid var(--portal-card-border, rgba(0, 0, 0, 0.06));
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.single.summary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 113, 227, 0.2);
+}
+
+/* 左栏：封面图（固定宽度，高度跟随卡片）*/
+.card-cover-wrap {
+  width: 55%;
+  flex-shrink: 0;
+  max-width: 480px;
+  min-width: 240px;
+  overflow: hidden;
+  position: relative;
+  background: #f0f0f2;
+}
+.single.summary .card-link {
+  display: block;
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+.featured-image-preview {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+}
+.single.summary:hover .featured-image-preview img {
+  transform: scale(1.05);
+}
+
+/* 无图渐变占位（按分类配色）*/
+.card-cover {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0.6rem 0.8rem;
+  position: relative;
+  background: linear-gradient(135deg, #8e8e93 0%, #aeaeb2 100%);
+  color: #fff;
+}
+.card-cover .cat-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.card-cover .cat-letter {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  font-family: "Songti SC", Georgia, serif;
+  align-self: flex-end;
+  opacity: 0.92;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+/* 各分类配色 */
+.card-cover[data-cat="算法竞赛"] { background: linear-gradient(135deg, #0071e3 0%, #5ac8fa 100%); }
+.card-cover[data-cat="开发"] { background: linear-gradient(135deg, #af52de 0%, #c77dff 100%); }
+.card-cover[data-cat="工作"] { background: linear-gradient(135deg, #ff9500 0%, #ffb340 100%); }
+.card-cover[data-cat="成长经历"] { background: linear-gradient(135deg, #30d158 0%, #98fb98 100%); }
+.card-cover[data-cat="记录"] { background: linear-gradient(135deg, #ff2d55 0%, #ff6b8a 100%); }
+.card-cover[data-cat="游戏"] { background: linear-gradient(135deg, #5ac8fa 0%, #66d9ef 100%); }
+.card-cover[data-cat="电子书"] { background: linear-gradient(135deg, #5856d6 0%, #7b79ff 100%); }
+
+/* 右栏：标题 + meta + 摘要 + 阅读全文 */
+.card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.45rem 0.95rem;
+}
+.single.summary .single-title {
+  margin: 0 0 0.3rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.single.summary .single-title a {
+  color: var(--portal-text, #1d1d1f);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.single.summary .single-title a:hover { color: #0071e3; }
+
+.post-meta-simple {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.72rem;
+  color: var(--portal-muted, #6e6e73);
+}
+.post-meta-simple i { margin-right: 0.3rem; }
+.post-meta-simple .post-cat a {
+  color: #0071e3;
+  text-decoration: none;
+}
+
+.summary-content {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--portal-muted, #6e6e73);
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  p { margin: 0; }
+}
+
+.post-footer { display: none; }
+.read-more {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #0071e3;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.read-more:hover { transform: translateX(3px); }
+
+/* 图片左右交替：偶数卡片图片在右、内容在左 */
+.summary-grid .single.summary:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* 移动端：堆叠（图在上，文在下）*/
+@media (max-width: 640px) {
+  .single.summary,
+  .summary-grid .single.summary:nth-child(even) { flex-direction: column; }
+  .card-cover-wrap { width: 100%; aspect-ratio: 16 / 9; }
+  .card-cover { min-height: 0; }
+}
+
+/* 暗色模式 */
+[data-theme='dark'] .single.summary {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+}
+[data-theme='dark'] .single.summary:hover {
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+}
+[data-theme='dark'] .card-cover-wrap { background: #1c1c1e; }
+[data-theme='dark'] .card-cover .cat-label {
+  background: rgba(0, 0, 0, 0.3);
+}
