@@ -1,0 +1,21 @@
+{{- /*
+  PDF 嵌入 shortcode
+  用法（位置参数）:
+    {{< pdf "/files/claude-code-share.pdf" >}}
+  用法（命名参数，可省略）:
+    {{< pdf path="/files/claude-code-share.pdf" title="分享 PPT" height="720" >}}
+*/ -}}
+{{- $path := .Get "path" | default (.Get 0) -}}
+{{- $title := .Get "title" | default "PPT" -}}
+{{- $height := .Get "height" | default "640" -}}
+<div class="pdf-embed">
+  <embed src="{{ $path }}#view=FitH"
+         type="application/pdf"
+         width="100%"
+         height="{{ $height }}"
+         loading="lazy"
+         style="border:1px solid rgba(128,128,128,0.25);border-radius:8px;display:block" />
+  <p class="pdf-embed-hint">
+    <a href="{{ $path }}" target="_blank" rel="noopener">↗ 全屏打开{{ with $title }}：{{ . }}{{ end }}</a>
+  </p>
+</div>

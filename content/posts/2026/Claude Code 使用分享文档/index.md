@@ -3,7 +3,6 @@ title: "AI技术分享：Claude Code 使用分享"
 date: 2026-01-07
 draft: false
 categories:
-  - 开发
   - 工作
 tags:
   - AI

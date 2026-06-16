@@ -1,10 +1,9 @@
 ---
-title: "🔒 我的成长经历"
+title: "🔒 我的经历"
 date: 2026-06-11
 draft: false
 categories:
   - 成长经历
-  - 算法竞赛
 tags:
   - 成长
   - 随笔

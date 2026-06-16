@@ -3,7 +3,6 @@ title: "AI技术分享：Claude Code Agents Team"
 date: 2026-04-19
 draft: false
 categories:
-  - 开发
   - 工作
 tags:
   - AI

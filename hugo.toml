@@ -12,6 +12,7 @@ buildFuture = true
   keywords = ["Hugo", "FixIt", "博客"]
   defaultTheme = "auto"
   dateFormat = "2006-01-02"
+  summaryPlainify = true
 
   [params.author]
     name = "Supper2002"
@@ -188,7 +189,7 @@ buildFuture = true
 # 成长经历
 [[menus.main]]
   identifier = "growth"
-  name = "成长经历"
+  name = "经历"
   url = "/categories/成长经历/"
   weight = 5
   [menus.main.params]

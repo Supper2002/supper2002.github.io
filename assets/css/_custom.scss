@@ -1701,12 +1701,18 @@ a.about-account:focus {
   border-color: rgba(0, 113, 227, 0.2);
 }
 
-/* 左栏：封面图（固定宽度，高度跟随卡片）*/
+/* 单列横向卡片 + 左右交替：奇数图左，偶数图右 */
+.summary-grid .single.summary:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* 封面图（横向卡片，默认在左）*/
 .card-cover-wrap {
   width: 55%;
   flex-shrink: 0;
   max-width: 480px;
   min-width: 240px;
+  min-height: 220px;
   overflow: hidden;
   position: relative;
   background: #f0f0f2;
@@ -1787,10 +1793,10 @@ a.about-account:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0.45rem 0.95rem;
+  padding: 1.6rem 1.2rem;
 }
 .single.summary .single-title {
-  margin: 0 0 0.3rem;
+  margin: 0 0 0.5rem;
   font-size: 0.98rem;
   font-weight: 700;
   line-height: 1.35;
@@ -1809,7 +1815,7 @@ a.about-account:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   font-size: 0.72rem;
   color: var(--portal-muted, #6e6e73);
 }
@@ -1820,38 +1826,35 @@ a.about-account:focus {
 }
 
 .summary-content {
-  font-size: 0.78rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.6;
   color: var(--portal-muted, #6e6e73);
   flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   p { margin: 0; }
 }
 
-.post-footer { display: none; }
+.single.summary .post-footer { display: none; }
 .read-more {
   font-size: 0.74rem;
   font-weight: 600;
   color: #0071e3;
   text-decoration: none;
-  display: inline-block;
+  align-self: flex-start;
   transition: transform 0.2s ease;
 }
 .read-more:hover { transform: translateX(3px); }
 
-/* 图片左右交替：偶数卡片图片在右、内容在左 */
-.summary-grid .single.summary:nth-child(even) {
-  flex-direction: row-reverse;
-}
+/* 单列横向卡片：一行一篇，奇偶左右交替 */
 
-/* 移动端：堆叠（图在上，文在下）*/
+/* 移动端：卡片纵向堆叠（图上文下，取消左右交替）*/
 @media (max-width: 640px) {
   .single.summary,
   .summary-grid .single.summary:nth-child(even) { flex-direction: column; }
-  .card-cover-wrap { width: 100%; aspect-ratio: 16 / 9; }
+  .card-cover-wrap { width: 100%; max-width: none; min-width: 0; aspect-ratio: 16 / 9; }
   .card-cover { min-height: 0; }
 }
 
@@ -1866,3 +1869,22 @@ a.about-account:focus {
 [data-theme='dark'] .card-cover .cat-label {
   background: rgba(0, 0, 0, 0.3);
 }
+
+/* ================================
+   PDF 嵌入 shortcode
+   ================================ */
+.pdf-embed {
+  margin: 1.5rem 0;
+}
+.pdf-embed-hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.9em;
+  text-align: right;
+}
+.pdf-embed-hint a {
+  color: #0071e3;
+  text-decoration: none;
+}
+.pdf-embed-hint a:hover { text-decoration: underline; }
+[data-theme='dark'] .pdf-embed-hint a { color: #4ea1ff; }
+
