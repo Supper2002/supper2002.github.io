@@ -121,7 +121,25 @@ buildFuture = true
       Twitter = true
       Facebook = true
     [params.page.comment]
-      enable = false
+      enable = true
+      # FixIt 0.2.14 | Giscus 评论（基于 GitHub Discussions）
+      [params.page.comment.giscus]
+        enable = true
+        repo = "Supper2002/supper2002.github.io"
+        repoId = "R_kgDOS2n2oQ"
+        category = "Announcements"
+        categoryId = "DIC_kwDOS2n2oc4C_TYe"
+        mapping = "pathname"
+        origin = "https://giscus.app"
+        strict = "0"
+        term = ""
+        reactionsEnabled = "1"   # 开启表情反应（👍❤️🚀等，Giscus 自带）
+        emitMetadata = "0"
+        inputPosition = "bottom"
+        lang = "zh-CN"
+        lightTheme = "light"
+        darkTheme = "dark_dimmed"
+        lazyLoad = true
 
   # 图片优化：自动转 WebP、压缩、生成响应式 srcset
   [params.image]
@@ -204,23 +222,23 @@ buildFuture = true
   [menus.main.params]
     icon = "fa-solid fa-camera fa-fw"
 
-# 游戏
-[[menus.main]]
-  identifier = "game"
-  name = "游戏"
-  url = "/categories/游戏/"
-  weight = 7
-  [menus.main.params]
-    icon = "fa-solid fa-gamepad fa-fw"
+# 游戏（暂时下线，恢复时取消注释即可）
+# [[menus.main]]
+#   identifier = "game"
+#   name = "游戏"
+#   url = "/categories/游戏/"
+#   weight = 7
+#   [menus.main.params]
+#     icon = "fa-solid fa-gamepad fa-fw"
 
-# 电子书
-[[menus.main]]
-  identifier = "ebooks"
-  name = "电子书"
-  url = "/categories/电子书/"
-  weight = 8
-  [menus.main.params]
-    icon = "fa-solid fa-book fa-fw"
+# 电子书（暂时下线，恢复时取消注释即可）
+# [[menus.main]]
+#   identifier = "ebooks"
+#   name = "电子书"
+#   url = "/categories/电子书/"
+#   weight = 8
+#   [menus.main.params]
+#     icon = "fa-solid fa-book fa-fw"
 
 # 标签
 [[menus.main]]
