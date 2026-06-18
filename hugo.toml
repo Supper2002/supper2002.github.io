@@ -13,6 +13,8 @@ buildFuture = true
   defaultTheme = "auto"
   dateFormat = "2006-01-02"
   summaryPlainify = true
+  # 主内容 section，归档页/RSS/相关文章都依赖它（缺失会导致归档页空白）
+  mainSections = ["posts"]
 
   [params.author]
     name = "Supper2002"

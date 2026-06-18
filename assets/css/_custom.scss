@@ -1675,7 +1675,7 @@ a.about-account:focus {
 
 /* ================================
    Summary 横向卡片列表（分类/标签页）
-   左封面图 + 右标题/摘要，配合 layouts/summary.html 使用
+   左封面图 + 右标题/摘要，奇偶左右交替，配合 layouts/summary.html 使用
    ================================ */
 .summary-grid {
   display: flex;
@@ -1689,15 +1689,13 @@ a.about-account:focus {
   flex-direction: row;
   background: var(--portal-card-bg, #fff);
   border: 1px solid var(--portal-card-border, rgba(0, 0, 0, 0.06));
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .single.summary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.09);
   border-color: rgba(0, 113, 227, 0.2);
 }
 
@@ -1706,13 +1704,13 @@ a.about-account:focus {
   flex-direction: row-reverse;
 }
 
-/* 封面图（横向卡片，默认在左）*/
+/* 封面图（横向卡片，默认在左，严格 16:9 与预处理图片零裁剪匹配）*/
 .card-cover-wrap {
-  width: 55%;
+  width: 38%;
   flex-shrink: 0;
-  max-width: 480px;
-  min-width: 240px;
-  min-height: 220px;
+  max-width: 380px;
+  min-width: 200px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   position: relative;
   background: #f0f0f2;
@@ -1737,11 +1735,12 @@ a.about-account:focus {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
   }
 }
 .single.summary:hover .featured-image-preview img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* 无图渐变占位（按分类配色）*/
@@ -1793,11 +1792,11 @@ a.about-account:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1.6rem 1.2rem;
+  padding: 1.4rem 1.2rem;
 }
 .single.summary .single-title {
   margin: 0 0 0.5rem;
-  font-size: 0.98rem;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1.35;
   overflow: hidden;
@@ -1848,14 +1847,13 @@ a.about-account:focus {
 }
 .read-more:hover { transform: translateX(3px); }
 
-/* 单列横向卡片：一行一篇，奇偶左右交替 */
+/* 横向卡片：单列一行，奇偶左右交替 */
 
 /* 移动端：卡片纵向堆叠（图上文下，取消左右交替）*/
 @media (max-width: 640px) {
   .single.summary,
   .summary-grid .single.summary:nth-child(even) { flex-direction: column; }
-  .card-cover-wrap { width: 100%; max-width: none; min-width: 0; aspect-ratio: 16 / 9; }
-  .card-cover { min-height: 0; }
+  .card-cover-wrap { width: 100%; max-width: none; min-width: 0; }
 }
 
 /* 暗色模式 */
