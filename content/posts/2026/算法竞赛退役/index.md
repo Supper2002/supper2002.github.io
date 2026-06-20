@@ -67,19 +67,19 @@ TODO 回答这几个问题，串成一段：
 
 后面赛后补题，看赛后的视频讲解，加了一些牛客相关的群，认识了一些群友，了解了他们的一些训练方式：CodeForces以及AtCoder，感觉大有裨益。加了jly的粉丝群，也得到了一些抽象的表情包hh
 
-{{< image src="表情包/表情包1.jpg" caption="表情1" alt="表情1" >}}
+{{< image src="2023/表情包/表情包1.jpg" caption="表情1" alt="表情1" >}}
 
-{{< image src="表情包/表情包2.jpg" caption="表情2" alt="表情2" >}}
+{{< image src="2023/表情包/表情包2.jpg" caption="表情2" alt="表情2" >}}
 
-{{< image src="表情包/表情包3.png" caption="表情3" alt="表情3" >}}
+{{< image src="2023/表情包/表情包3.png" caption="表情3" alt="表情3" >}}
 
-{{< image src="表情包/表情包4.jpg" caption="表情4" alt="表情4" >}}
+{{< image src="2023/表情包/表情包4.jpg" caption="表情4" alt="表情4" >}}
 
-{{< image src="表情包/表情包5.jpg" caption="表情5" alt="表情5" >}}
+{{< image src="2023/表情包/表情包5.jpg" caption="表情5" alt="表情5" >}}
 
-{{< image src="表情包/表情包6.png" caption="表情6" alt="表情6" >}}
+{{< image src="2023/表情包/表情包6.png" caption="表情6" alt="表情6" >}}
 
-{{< image src="表情包/表情包7.jpg" caption="表情7" alt="表情7" >}}
+{{< image src="2023/表情包/表情包7.jpg" caption="表情7" alt="表情7" >}}
 
 以及jls的vp视频
 
