@@ -5,6 +5,8 @@ theme = "FixIt"
 enableGitInfo = true
 hasCJKLanguage = true
 buildFuture = true
+# 图密集的文章（如算竞退役作文，单篇 30+ 张图）在 CI 上会触发 1m 默认超时
+timeout = "5m"
 
 [params]
   version = "0.4.X"
