@@ -38,6 +38,12 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      # 关键：中文目录名文章需要 quotepath=false，否则 git log 输出会把
+      # 路径转义成 \347\256... 形式，Hugo GitInfo 匹配不到，.Lastmod 失效
+      # 回退到 .Date，导致归档页"最近更新"过滤掉这些文章
+      - name: Configure git for non-ASCII paths
+        run: git config core.quotepath false
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5

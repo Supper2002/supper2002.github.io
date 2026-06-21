@@ -179,4 +179,7 @@
     <loc>//localhost:1313/archives/</loc>
     <lastmod>2026-06-10T22:28:12+08:00</lastmod>
   </url>
+  <url>
+    <loc>//localhost:1313/categories/%E7%BB%8F%E5%8E%86/</loc>
+  </url>
 </urlset>
