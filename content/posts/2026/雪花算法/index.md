@@ -9,7 +9,7 @@ tags:
   - Snowflake
 resources:
   - name: featured-image
-    src: featured-image.png
+    src: featured-image.jpg
 ---
 
 ### **🚕 一、了解Snowflake**

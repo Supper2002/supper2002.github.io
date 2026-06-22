@@ -9,7 +9,7 @@ tags:
   - 技术分享
 resources:
   - name: featured-image
-    src: featured-image.png
+    src: featured-image.jpg
 ---
 
 > 这是团队分享 Codex 的初步了解与使用笔记，完整 PPT 见下方折叠块。

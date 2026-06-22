@@ -1,18 +1,18 @@
 {{- /*
 项目级 Markdown 图片渲染 hook（覆盖 FixIt 默认）
-- 全局默认：800w / 1200w / 1600w 三档（与 FixIt 一致）
+- 全局默认：800w / 1200w / 1600w 三档 + q75（默认 q90 文件过大）
+- 全局加 sizes：文章正文容器 ~760px，桌面浏览器不再无脑选 1600w
 - 照片墙路径下：网格布局单图实际显示 ≤ ~450px，改用 400w / 800w / 1200w
-  并补 sizes 属性，让桌面浏览器不再无脑选 1600w
 - 原图保持不变，所有改动只影响生成的 srcset / sizes
 */ -}}
 {{- $params := .Page.Params | merge site.Params.page -}}
 
 {{- $optim := slice
-  (dict "Process" "resize 800x webp" "descriptor" "800w")
-  (dict "Process" "resize 1200x webp" "descriptor" "1200w")
-  (dict "Process" "resize 1600x webp" "descriptor" "1600w")
+  (dict "Process" "resize 800x webp q75" "descriptor" "800w")
+  (dict "Process" "resize 1200x webp q75" "descriptor" "1200w")
+  (dict "Process" "resize 1600x webp q75" "descriptor" "1600w")
 -}}
-{{- $sizes := "" -}}
+{{- $sizes := "(max-width: 768px) 100vw, 760px" -}}
 
 {{- /* 照片墙：4/3/2/1 列网格，单图实际宽度远小于视口 */ -}}
 {{- if hasPrefix .Page.File.Dir "photos-wall" -}}

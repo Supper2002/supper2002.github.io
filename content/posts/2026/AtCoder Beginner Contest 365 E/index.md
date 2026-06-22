@@ -10,7 +10,7 @@ tags:
   - 位运算
 resources:
   - name: featured-image
-    src: featured-image.png
+    src: featured-image.jpg
 ---
 
 [Toyota Programming Contest 2024#8（AtCoder Beginner Contest 365）](https://atcoder.jp/contests/abc365)
