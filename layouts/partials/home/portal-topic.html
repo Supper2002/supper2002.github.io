@@ -11,12 +11,17 @@
   "游戏"     "游戏记录与片段"
   "电子书"   "读书笔记与整理"
 -}}
-{{- /* 用 .Ctx.Name（字面中文）查 taxonomy，避开 URL 编码问题 */ -}}
+{{- /* 用 .Ctx.Name（字面中文）查 taxonomy；遇到 name 与 taxonomy key 不一致的菜单，
+     用 catKeyMap 做映射（如导航栏 "经历" 对应分类 "成长经历"）*/ -}}
+{{- $catKeyMap := dict
+  "经历"   "成长经历"
+-}}
+{{- $catKey := index $catKeyMap .Ctx.Name | default .Ctx.Name -}}
 {{- $count := 0 -}}
-{{- with index .TaxCats .Ctx.Name -}}
+{{- with index .TaxCats $catKey -}}
   {{- $count = len .Pages -}}
 {{- end -}}
-{{- $desc := index $descriptions .Ctx.Name | default "敬请期待" -}}
+{{- $desc := index $descriptions $catKey | default "敬请期待" -}}
 <li>
   <a href="{{ .Ctx.URL }}">
     <span class="row-icon"><i class="{{ .Ctx.Params.Icon }}"></i></span>
