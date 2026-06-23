@@ -1,25 +1,25 @@
 {{- /*
 项目级 Markdown 图片渲染 hook（覆盖 FixIt 默认）
-- 全局默认：800w / 1200w / 1600w 三档 + q75（默认 q90 文件过大）
-- 全局加 sizes：文章正文容器 ~760px，桌面浏览器不再无脑选 1600w
-- 照片墙路径下：网格布局单图实际显示 ≤ ~450px，改用 400w / 800w / 1200w
+- 全局默认：800w / 1200w 两档 + q70（默认 q90 文件过大）
+  · 正文容器 ~760px，桌面 1x 选 800w，retina 2x 选 1200w
+  · 砍掉 1600w 档：retina 实际只需 1520w，1200w 缩放显示已够清晰
+- 全局加 sizes：让浏览器按容器宽度选档
+- 照片墙路径下：网格布局单图实际显示 ≤ ~450px，改用 400w / 800w
 - 原图保持不变，所有改动只影响生成的 srcset / sizes
 */ -}}
 {{- $params := .Page.Params | merge site.Params.page -}}
 
 {{- $optim := slice
-  (dict "Process" "resize 800x webp q75" "descriptor" "800w")
-  (dict "Process" "resize 1200x webp q75" "descriptor" "1200w")
-  (dict "Process" "resize 1600x webp q75" "descriptor" "1600w")
+  (dict "Process" "resize 800x webp q70" "descriptor" "800w")
+  (dict "Process" "resize 1200x webp q70" "descriptor" "1200w")
 -}}
 {{- $sizes := "(max-width: 768px) 100vw, 760px" -}}
 
 {{- /* 照片墙：4/3/2/1 列网格，单图实际宽度远小于视口 */ -}}
 {{- if hasPrefix .Page.File.Dir "photos-wall" -}}
   {{- $optim = slice
-    (dict "Process" "resize 400x webp q75" "descriptor" "400w")
-    (dict "Process" "resize 800x webp q75" "descriptor" "800w")
-    (dict "Process" "resize 1200x webp q75" "descriptor" "1200w")
+    (dict "Process" "resize 400x webp q70" "descriptor" "400w")
+    (dict "Process" "resize 800x webp q70" "descriptor" "800w")
   -}}
   {{- $sizes = "(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1100px) 33vw, 25vw" -}}
 {{- end -}}
@@ -27,12 +27,12 @@
 {{- if .Title -}}
   {{- $linked := ne $params.lightgallery false -}}
   <figure>
-    {{- dict "Src" .Destination "Alt" .PlainText "Title" .Title "Caption" .Text "Linked" $linked "Loading" "lazy" "Resources" .Page.Resources "OptimConfig" $optim "Sizes" $sizes | partial "plugin/image.html" -}}
+    {{- dict "Src" .Destination "Alt" .PlainText "Title" .Title "Caption" .Text "Linked" $linked "Loading" "lazy" "Decoding" "async" "Resources" .Page.Resources "OptimConfig" $optim "Sizes" $sizes | partial "plugin/image.html" -}}
     <figcaption class="image-caption">
       {{- .Title | safeHTML -}}
     </figcaption>
   </figure>
 {{- else -}}
   {{- $linked := (eq $params.lightgallery "force") | or ($params.lightgallery | and (ne .Title "")) -}}
-  {{- dict "Src" .Destination "Alt" .PlainText "Title" .Title "Linked" $linked "Loading" "lazy" "Resources" .Page.Resources "OptimConfig" $optim "Sizes" $sizes | partial "plugin/image.html" -}}
+  {{- dict "Src" .Destination "Alt" .PlainText "Title" .Title "Linked" $linked "Loading" "lazy" "Decoding" "async" "Resources" .Page.Resources "OptimConfig" $optim "Sizes" $sizes | partial "plugin/image.html" -}}
 {{- end -}}
